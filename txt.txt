@@ -1,0 +1,5 @@
+
+r7hP5zVP3SUclNVa
+prag90987_db_user
+mongodb+srv://<db_username>:<db_password>@cluster0.ujrhjed.mongodb.net/
+mongodb+srv://prag90987_db_user:r7hP5zVP3SUclNVa@cluster0.ujrhjed.mongodb.net/restroDB?compressors=zlib
