@@ -1,9 +1,11 @@
 import {useState} from 'react'
-
+import {useRouter} from "next/navigation"
 const RestaurantLogin = () => {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const [error, setError] = useState(false)
+  const router = useRouter()
+
   async function handleLogin(){
     if(!email || !password){
       setError(true)
@@ -16,9 +18,13 @@ const RestaurantLogin = () => {
       body:JSON.stringify({email,password,login:true})
     })
     response=await response.json()
-    if(response.success){
-      alert("login successful")
-    }
+    if(response.success && response.result){
+  const {password, ...user} = response.result
+  localStorage.setItem("restaurantUser", JSON.stringify(user))
+  router.push("/restaurant/dashboard")
+} else {
+  alert("login failed")
+}
   }
   return (
     <div>
