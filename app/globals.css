@@ -17,3 +17,9 @@
   color: skyblue;
 
 }
+.input-error{
+    display: block;
+    padding: 4px 0;
+    font-size: 13px;
+    color: red;
+}
