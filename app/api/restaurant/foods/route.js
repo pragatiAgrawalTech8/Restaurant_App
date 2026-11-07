@@ -11,8 +11,12 @@ export async function GET() {
 
 export async function POST(request){
     const payload = await request.json()
+    let success = false
     await mongoose.connect(connectionStr)
     const food = new foodSchema(payload)
     const result = await food.save()
-    return NextResponse.json({result,success:true})
+    if(result){
+        success=true
+    }
+    return NextResponse.json({result,success})
 }
