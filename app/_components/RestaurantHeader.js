@@ -15,7 +15,11 @@ const RestaurantHeader = () => {
             router.push("/restaurant/dashboard")
         }
         else{
-            setDetails(JSON.parse(data))
+             if (data) {
+                setDetails(JSON.parse(data))
+            } else {
+                setDetails(null) // Agar data nahi hai toh state khali kar dein
+            }
         }
     },[pathName])
     const logout = ()=>{

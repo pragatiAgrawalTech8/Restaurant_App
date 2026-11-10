@@ -2,6 +2,7 @@
 import React from 'react'
 import RestaurantHeader from "@/app/_components/RestaurantHeader"
 import AddFoodItem from "@/app/_components/AddFoodItem"
+import FoodItemList from "@/app/_components/FoodItemList"
 import {useState} from "react"
 import './../style.css'
 const Dashboard = () => {
@@ -12,7 +13,7 @@ const Dashboard = () => {
     <button onClick={()=>setAddItem(true)}>Add Food</button>
     <button onClick={()=>setAddItem(false)}>Dashboard</button>
     {
-      addItem ? <AddFoodItem/> : <div>Dashboard</div>
+      addItem ? <AddFoodItem/> : <FoodItemList/>
     }
     
     
