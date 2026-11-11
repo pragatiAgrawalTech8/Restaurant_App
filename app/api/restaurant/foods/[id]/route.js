@@ -15,12 +15,18 @@ export async function GET(request,{params}){
 }
 
 export async function DELETE(request,{params}){
-    const {id} = await params
-    let success = false
-    await mongoose.connect(connectionStr)
-    const result = await foodSchema.deleteOne({_id:id})
-    if(result.deleteCount){ 
-        success = true
+    try {
+        
+        const {id} = await params
+        let success = false
+        await mongoose.connect(connectionStr)
+        const result = await foodSchema.deleteOne({_id:id})
+        if(result.deletedCount){ 
+            success = true
+        }
+        return NextResponse.json({result,success})
+    } catch (error) {
+         console.log("Delete Error:", error);
+        return NextResponse.json({ success: false, error: error.message }, { status: 500 });
     }
-    return NextResponse.json({result,success})
 }
