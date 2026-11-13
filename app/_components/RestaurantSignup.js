@@ -31,6 +31,9 @@ const RestaurantSignup = () => {
     console.log(email,password,c_password,name,city,address,contact);
     let response = await fetch("http://localhost:3000/api/restaurant",{
       method:"POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
       body:JSON.stringify({email,password,name,city,address,contact})
     })
     response = await response.json()
@@ -56,9 +59,9 @@ const RestaurantSignup = () => {
         <input type="password" placeholder="Enter password" className="input-field" 
         value={password} onChange={(event)=>setPassword(event.target.value)} />
       </div>
-      {
-        passwordError && <span className="input-error">Password and Confirm Password not match</span>
-      }
+      {/* { */}
+         {/* passwordError && <span className="input-error">Password and Confirm Password not match</span> */}
+       {/* } */}
        {
           error && !password && <span className="input-error">Enter valid password</span>
         }
