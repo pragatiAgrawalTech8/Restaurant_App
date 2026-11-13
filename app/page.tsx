@@ -5,7 +5,13 @@ export default function Home() {
   return (
     <>
     <CustomerHeader />
+    <div className="main-page-banner">
     <h1>Restaurant App</h1>
+    <div className="input-wrapper">
+      <input type="text" className="select-input" placeholder="Select Place"/>
+      <input type="text" className="search-input" placeholder="Enter food or restaurant name"/>
+    </div>
+    </div>
     <Footer />
     </>
   );
