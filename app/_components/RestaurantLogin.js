@@ -9,6 +9,7 @@ const RestaurantLogin = () => {
   async function handleLogin(){
     if(!email || !password){
       setError(true)
+      return false
     } else{
       setError(false)
     }

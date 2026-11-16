@@ -7,21 +7,23 @@ const RestaurantHeader = () => {
     const [details,setDetails] = useState(null)
     const router = useRouter()
     const pathName= usePathname()
-    useEffect(()=>{
-        let data = localStorage.getItem("restaurantUser")
-        if(!data && pathName == "/restaurant/dashboard"){
-            router.push("/restaurant")
-        } else if(data && pathName == "/restaurant"){
-            router.push("/restaurant/dashboard")
-        }
-        else{
-             if (data) {
-                setDetails(JSON.parse(data))
-            } else {
-                setDetails(null) // Agar data nahi hai toh state khali kar dein
-            }
-        }
-    },[pathName])
+    useEffect(() => {
+    const data = localStorage.getItem("restaurantUser")
+    let user = null
+    try {
+        user = data ? JSON.parse(data) : null
+    } catch (e) {
+        user = null
+    }
+
+    if (user && user.name) {
+        setDetails(user)
+        if (pathName === "/restaurant") router.push("/restaurant/dashboard")
+    } else {
+        setDetails(null)
+        if (pathName === "/restaurant/dashboard") router.push("/restaurant")
+    }
+}, [pathName])
     const logout = ()=>{
         localStorage.removeItem("restaurantUser")
         setDetails(null)

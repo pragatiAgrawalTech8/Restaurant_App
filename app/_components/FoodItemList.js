@@ -47,7 +47,7 @@ const FoodItemList = () => {
             <tbody>
                 {
                 foodItem.map((item,key)=>(
-                 <tr key={key}>
+                 <tr key={item._id}>
                     <td>{key+1}</td>
                     <td>{item.name}</td>
                     <td>{item.price}</td>
